@@ -15,7 +15,7 @@ def ask_question(messages):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
-        max_tokens=2000
+#        max_tokens=2000
     )
     return response.choices[0].message['content'].strip()
 
