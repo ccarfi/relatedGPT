@@ -7,7 +7,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def parse_choices(response):
     """Parse the choices from the model's response"""
-    choices = re.findall(r"\d[\.\)]\s*.+", response)
+    choices = re.findall(r"\d\..+", response)
     return choices
 
 def ask_question(messages):
@@ -15,7 +15,6 @@ def ask_question(messages):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
-        max_tokens=2000
     )
     return response.choices[0].message['content'].strip()
 
